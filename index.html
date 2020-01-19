@@ -17,7 +17,7 @@
     <!--  Coinmarketcap for latest price -->
 
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' 'unsafe-inline'; connect-src 'self' https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/ https://memberjs.org https://rest.bitcoin.com/v2/ https://memberjs.org:8123/ https://memberjs.org:8124/ http://127.0.0.1:3123/ http://127.0.0.1:3124/; img-src 'self' https://imgur.com https://i.imgur.com/ https://img.youtube.com/vi/ data: https://tile.openstreetmap.org/; frame-src 'self' https://www.youtube.com/  https://twitframe.com/ https://img.youtube.com/vi/;">
+        content="default-src 'self' 'unsafe-inline'; connect-src 'self' https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/ https://memberjs.org https://rest.bitcoin.com/v2/ https://memberjs.org:8123/ https://memberjs.org:8124/ http://127.0.0.1:3123/ http://127.0.0.1:3124/; img-src 'self' https://imgur.com https://i.imgur.com/ https://img.youtube.com/vi/ data: https://tile.openstreetmap.org/ http://a.tile.stamen.com/toner/; frame-src 'self' https://www.youtube.com/  https://twitframe.com/ https://img.youtube.com/vi/;">
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,6 +57,8 @@
     <!--  Leaflet (Map) -->
     <link rel="stylesheet" href="js/leaflet/leaflet.css" />
     <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet.restoreview.js"></script>
+    <script src="js/leaflet/leaflet.cachestorage.js"></script>
 
     <link rel="stylesheet" href="js/lib/mde/simplemde.min.css" />
     <link rel="stylesheet" href="js/lib/mde/fareplacements.css" />
@@ -90,7 +92,26 @@
     <script src="js/lib/vavilon.min.js"></script>
 
     <!--  Member Minified Code. -->
-    <script src="js/lib/member.min.js"></script>
+    <!--script src="js/lib/member.min.js"></!--script-->
+
+
+        <!--  Member Code. In separate files for development convenience -->
+    <!--  Can be mininfied and amalgamated for releases -->
+
+    <script src="js/utils.js"></script>
+    <script src="js/posts.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/follows.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/transactions.js"></script>
+    <script src="js/transactionqueue.js"></script>
+    <script src='js/map.js'></script>
+    <script src='js/trustgraph.js'></script>
+    <script src='js/bootstrapratings.js'></script>
+    <script src="js/login.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/htmlquarantine.js"></script>
+
 
     <div id="map" style="width:100%; height:100%;display:none;"></div>
 
