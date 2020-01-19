@@ -8,11 +8,13 @@ const PRECACHE_URLS = [
     'css/base.css',
     'img/bch.png',
     'js/leaflet/leaflet.js',
+    'index.html',
     'locale/en.json'
 ];
 const version = '3.5.5.9';
 const RUNTIME = 'runtime-' + version;
 const INSTALL = 'install-' + version;
+const MAP_TILES = 'offline-map-tiles';
 
 
 self.addEventListener('install', (event) => {
@@ -56,14 +58,26 @@ self.addEventListener("activate", function (event) {
 
 
 self.addEventListener('fetch', function (event) {
-    if (event.request.url.includes('/version')) {
-        event.respondWith(new Response(version, {
-          headers: {
-            'content-type': 'text/plain'
-          }
-        }));
-      }
 
+  
+    if (event.request.url.includes('/version')) {
+      event.respondWith(new Response(version, {
+        headers: {
+          'content-type': 'text/plain'
+        }
+      }));
+    }
+    else if (event.request.url.includes('offline-map-tiles')) {
+      event.respondWith(
+        caches.match(event.request).then(cachedResponse => {
+          //console.log("[ServiceWorker] Request "+event.request.url)
+            if (cachedResponse) {
+                return cachedResponse;
+            }else{
+              console.log("[ServiceWorker] Error: 404 "+ event.request.url)
+            }
+          }));
+    }
     else if (event.request.url.startsWith(self.location.origin)) {
         event.respondWith(
             caches.match(event.request).then(cachedResponse => {

@@ -1,11 +1,10 @@
-"use strict";
+    "use strict";
 
 var map = null;
 var popup;
 var postpopup;
 var markersDict = {};
 var firstload = true;
-var mapTileProvider = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
 function getAndPopulateMap(geohash, posttrxid) {
 
@@ -21,11 +20,22 @@ function getAndPopulateMap(geohash, posttrxid) {
         att.setPrefix("");
         att.addAttribution(getMapCloseButtonHTML()).setPosition('topright').addTo(map);
         //Load locations onto map when bounds_changed event fires. Only want this to happen one time. 
-        map.on('moveend', loadLocationListFromServerAndPlaceOnMap);
+        map.on('zoomend', loadLocationListFromServerAndPlaceOnMap);
+        map.on('dragend', loadLocationListFromServerAndPlaceOnMap);
 
         //Set London location and open street map tiles
-        map.setView([51.505, -0.09], 13);
-        L.tileLayer(mapTileProvider, {}).addTo(map);
+        if (!map.restoreView()) {
+            map.setView([51.505, -0.09], 13);
+        }
+        var layer = L.tileLayer(mapTileProvider, 
+            {
+                useCache: (location.protocol === 'https:' || location.hostname === 'localhost'),
+                useOnlyCache: false,
+                crossOrigin: true,
+                edgeBufferTiles: 5
+            });
+        
+        layer.addTo(map);
 
         //Attribution
         var att2 = L.control.attribution();
