@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    service: member-web
+  name: member-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: member-web
+  template:
+    metadata:
+      labels:
+        service: member-web
+    spec:
+      containers:
+      - image: zquestz/member-web:latest
+        imagePullPolicy: Always
+        name: member-web
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "16Mi"
+      restartPolicy: Always

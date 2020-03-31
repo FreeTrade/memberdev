@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: member-web
+  namespace: default
+spec:
+  ports:
+    - port: 96
+      targetPort: 80
+  selector:
+    service: member-web
+  type: NodePort
