@@ -26,7 +26,7 @@ var settings = {
     "showtwitter": "true"
 };
 var dropdowns = {
-    "contentserver": "https://memberjs.bchd.cash/member.js",
+    "contentserver": "https://memberjs.org:8123/member.js",
     "txbroadcastserver": "https://memberjs.bchd.cash/v2/",
     "utxoserver": "https://memberjs.bchd.cash/v2/",
     "currencydisplay": "USD"
