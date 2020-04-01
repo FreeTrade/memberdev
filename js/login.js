@@ -26,9 +26,9 @@ var settings = {
     "showtwitter": "true"
 };
 var dropdowns = {
-    "contentserver": "https://memberjs.org:8123/member.js",
-    "txbroadcastserver": "https://memberjs.org:8123/v2/",
-    "utxoserver": "https://rest.bitcoin.com/v2/",
+    "contentserver": "https://memberjs.bchd.cash/member.js",
+    "txbroadcastserver": "https://memberjs.bchd.cash/v2/",
+    "utxoserver": "https://memberjs.bchd.cash/v2/",
     "currencydisplay": "USD"
 };
 var numbers = {
