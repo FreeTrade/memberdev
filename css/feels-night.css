@@ -759,7 +759,7 @@ pre {
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f6f8fa;
+  background-color: rgba(255, 255, 255, 0.38);
   border-radius: 6px;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   white-space: break-spaces; }
